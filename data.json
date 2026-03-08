@@ -1,0 +1,52 @@
+[
+  {
+    "id": 123456,
+    "name": "Cooking Oil",
+    "price": 15000
+  },
+  {
+    "id": 654321,
+    "name": "Sugar",
+    "price": 12000
+  },
+  {
+    "id": 123123,
+    "name": "Salt",
+    "price": 5000
+  },
+  {
+    "id": 456456,
+    "name": "Chicken Eggs",
+    "price": 25000
+  },
+  {
+    "id": 676767,
+    "name": "Premium Rice",
+    "price": 50000
+  },
+  {
+    "id": 142536,
+    "name": "Tea Bags",
+    "price": 20000
+  },
+  {
+    "id": 635241,
+    "name": "Instant Coffee",
+    "price": 18000
+  },
+  {
+    "id": 234156,
+    "name": "White Bread",
+    "price": 15000
+  },
+  {
+    "id": 314567,
+    "name": "Cheddar Cheese",
+    "price": 40000
+  },
+  {
+    "id": 1993,
+    "name": "Amba Cheese",
+    "price": 99900
+  }
+]
