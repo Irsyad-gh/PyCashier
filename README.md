@@ -1,5 +1,5 @@
-# Portable-Cashier
-Portable Cashier is a Software program for a virtual cashier machine that include a Finder, a Cashier, an Adder (to add a product to the database) that can run locally on Windows and Linux (for future) without any internet connection needed, free and open-source for your business
+# PyCashier
+PyCashier is a Software program for a virtual cashier machine that include a Finder, a Cashier, an Adder (to add a product to the database) that can run locally on Windows and Linux (for future) without any internet connection needed, free and open-source for your business
 
 # ! Disclaimer !
 This program is not perfect yet, the currency are on the Indonesian Rupiah and not US Dollar or other currency format, so if you from another country, you have to adapt it to your country/region 
@@ -8,7 +8,7 @@ Before you comment about this program i would tell you that this program is 85% 
 
 # Lisence
 
-Copyright (C) 2026 Irsyad Dzaky Nurghany
+Copyright © 2026 Irsyad Dzaky Nurghany
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
