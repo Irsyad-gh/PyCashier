@@ -48,5 +48,10 @@
     "id": 1993,
     "name": "Amba Cheese",
     "price": 99900
+  },
+  {
+    "id": 17102012,
+    "name": "Uranium-235 0,7mg 125%",
+    "price": 150000
   }
 ]
