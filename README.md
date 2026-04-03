@@ -33,7 +33,7 @@
 ## ⚠️ Important Notes
 * **Currency Support:** This program is currently optimized for **Indonesian Rupiah (IDR)**. Users in other regions may need to customize the source code to match their local currency formats.
 * **Development Background:** To ensure rapid deployment and modern code structures, this project was developed leveraging **advanced artificial intelegent-assisted programming tools**. While highly functional, it is recommended to review the code for specific business logic adjustments.
-* * **Contributions:** This project is **need your contributions** to make the UI even better! Now it's look like the Windows 9x GUI and so outdated, so please
+* **Contributions:** This project is **need your contributions** to make the UI even better! Now it's look like the Windows 9x GUI and so outdated, so please
 
 ---
 
