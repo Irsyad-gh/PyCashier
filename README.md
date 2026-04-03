@@ -11,9 +11,29 @@
 * **100% Offline:** Works anywhere, anytime, ensuring your data stays private.
 * **Free & Open Source:** Designed to support growth for small enterprises.
 
+## Preview
+<img width="456" alt="adder" src="https://github.com/user-attachments/assets/82bbabd6-2e00-47fd-99b0-41d1ee23092d" />
+<br>
+<sub><i>Window of the Adder app in Linux (looks the same in Windows)</i></sub>
+
+<br><br>
+
+<img width="456" alt="cashier" src="https://github.com/user-attachments/assets/4d974fc7-aa8d-4b54-b7dc-d031d1bcd3a1" />
+<br>
+<sub><i>Window of the Cashier app in Linux (looks the same in Windows)</i></sub>
+
+<br><br>
+
+<img width="456" alt="finder" src="https://github.com/user-attachments/assets/51401d89-09da-4ab5-ad1e-97a4157ad622" />
+<br>
+<sub><i>Window of the Cashier app in Linux (looks the same in Windows)</i></sub>
+
+---
+
 ## ⚠️ Important Notes
 * **Currency Support:** This program is currently optimized for **Indonesian Rupiah (IDR)**. Users in other regions may need to customize the source code to match their local currency formats.
-* **Development Background:** To ensure rapid deployment and modern code structures, this project was developed leveraging **advanced AI-assisted programming tools**. While highly functional, it is recommended to review the code for specific business logic adjustments.
+* **Development Background:** To ensure rapid deployment and modern code structures, this project was developed leveraging **advanced artificial intelegent-assisted programming tools**. While highly functional, it is recommended to review the code for specific business logic adjustments.
+* * **Contributions:** This project is **need your contributions** to make the UI even better! Now it's look like the Windows 9x GUI and so outdated, so please
 
 ---
 
