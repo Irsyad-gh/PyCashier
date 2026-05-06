@@ -23,7 +23,7 @@ class ProductAdderApp:
         self.root = root
         self.root.title("Portable Cashier - Product Management")
         self.root.geometry("1000x700")
-        self.root.resizable(False, False)
+        self.root.resizable(True, True)
         
         self.data = []
         # Menggunakan resource_path untuk menentukan lokasi file
