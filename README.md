@@ -2,7 +2,7 @@
 
 # 🛒 PyCashier
 
-**PyCashier** is a lightweight virtual point-of-sale (POS) software designed for small businesses. It features a robust product Finder, a streamlined Cashier interface, and an easy-to-use Adder for inventory management. Built for reliability, it runs locally on Windows and Linux without requiring an internet connection.
+**PyCashier** is a lightweight virtual point-of-sale (POS) software designed for small businesses. It features a robust product Finder, a streamlined Cashier interface, and an easy-to-use Adder for inventory management. Built for reliability, it runs locally & cross platform on Windows and Linux without requiring an internet connection.
 
 ## ✨ Key Features
 * **Product Finder:** Quickly locate items within your local database.
