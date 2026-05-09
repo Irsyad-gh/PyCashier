@@ -35,14 +35,25 @@ def setup_dpi_awareness():
 
 
 class ProductAdderApp:
-    def __init__(self, root):
+    """
+    A Tkinter-based application for managing product data in a JSON file.
+    Allows adding, deleting, and viewing products with ID, name, and price.
+    """
+
+    def __init__(self, root: tk.Tk) -> None:
+        """
+        Initialize the ProductAdderApp.
+
+        Args:
+            root: The root Tkinter window.
+        """
         self.root = root
         self.root.title("Portable Cashier - Product Management")
         self.root.geometry("1000x700")
         self.root.minsize(700, 500)
         self.root.resizable(True, True)
 
-        self.data = []
+        self.data: list[dict] = []
         self.data_file = resource_path("data.json")
 
         if not self.load_data():
@@ -60,8 +71,15 @@ class ProductAdderApp:
             messagebox.showerror("Error", f"Gagal membuat antarmuka:\n{e}")
             self.root.destroy()
 
-    def load_data(self):
-        """Load data from JSON file using resource_path."""
+    def load_data(self) -> bool:
+        """
+        Load product data from the JSON file.
+
+        If the file doesn't exist, create an empty one.
+
+        Returns:
+            True if data loaded successfully, False otherwise.
+        """
         if not os.path.exists(self.data_file):
             # Create an empty data.json if it doesn't exist
             try:
@@ -80,8 +98,13 @@ class ProductAdderApp:
         except Exception:
             return False
 
-    def save_data(self):
-        """Save data to JSON file."""
+    def save_data(self) -> bool:
+        """
+        Save the current product data to the JSON file.
+
+        Returns:
+            True if saved successfully, False otherwise.
+        """
         try:
             with open(self.data_file, "w", encoding="utf-8") as f:
                 json.dump(self.data, f, indent=2, ensure_ascii=False)
@@ -90,7 +113,10 @@ class ProductAdderApp:
             messagebox.showerror("Error", f"Gagal menyimpan file:\n{e}")
             return False
 
-    def create_widgets(self):
+    def create_widgets(self) -> None:
+        """
+        Create and layout all the GUI widgets for the application.
+        """
         # ── Header ───────────────────────────────────────────────────────────
         tk.Label(
             self.root,
@@ -116,14 +142,17 @@ class ProductAdderApp:
         form_frame.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 10))
         form_frame.columnconfigure(1, weight=1)
 
+        # Product ID field
         ttk.Label(form_frame, text="Product ID:").grid(row=0, column=0, sticky="w", pady=5)
         self.id_entry = ttk.Entry(form_frame, font=("Arial", 11), width=20)
         self.id_entry.grid(row=0, column=1, sticky="ew", padx=5, pady=5)
 
+        # Product Name field
         ttk.Label(form_frame, text="Product Name:").grid(row=1, column=0, sticky="w", pady=5)
         self.name_entry = ttk.Entry(form_frame, font=("Arial", 11), width=20)
         self.name_entry.grid(row=1, column=1, sticky="ew", padx=5, pady=5)
 
+        # Price field
         ttk.Label(form_frame, text="Price (Rp):").grid(row=2, column=0, sticky="w", pady=5)
         self.price_entry = ttk.Entry(form_frame, font=("Arial", 11), width=20)
         self.price_entry.grid(row=2, column=1, sticky="ew", padx=5, pady=5)
@@ -132,6 +161,7 @@ class ProductAdderApp:
         for entry in (self.id_entry, self.name_entry, self.price_entry):
             entry.bind("<Return>", lambda _e: self.add_product())
 
+        # Add Product button
         ttk.Button(
             form_frame, text="➕  Add Product", command=self.add_product
         ).grid(row=3, column=0, columnspan=2, sticky="ew", pady=15)
@@ -140,10 +170,12 @@ class ProductAdderApp:
             row=4, column=0, columnspan=2, sticky="ew", pady=5
         )
 
+        # Refresh button
         ttk.Button(
             form_frame, text="🔄  Refresh", command=self.refresh_table
         ).grid(row=5, column=0, columnspan=2, sticky="ew", pady=3)
 
+        # Delete Selected button
         ttk.Button(
             form_frame, text="🗑  Delete Selected", command=self.delete_product
         ).grid(row=6, column=0, columnspan=2, sticky="ew", pady=3)
@@ -152,12 +184,14 @@ class ProductAdderApp:
         table_frame = ttk.LabelFrame(main_frame, text=" Product List ", padding=10)
         table_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
+        # Scrollbars for the table
         scrollbar_y = ttk.Scrollbar(table_frame, orient="vertical")
         scrollbar_y.pack(side=tk.RIGHT, fill=tk.Y)
 
         scrollbar_x = ttk.Scrollbar(table_frame, orient="horizontal")
         scrollbar_x.pack(side=tk.BOTTOM, fill=tk.X)
 
+        # Treeview for displaying products
         self.product_tree = ttk.Treeview(
             table_frame,
             columns=("ID", "Name", "Price"),
@@ -169,6 +203,7 @@ class ProductAdderApp:
         scrollbar_y.config(command=self.product_tree.yview)
         scrollbar_x.config(command=self.product_tree.xview)
 
+        # Configure column headings and widths
         self.product_tree.heading("ID", text="PRODUCT ID")
         self.product_tree.heading("Name", text="PRODUCT NAME")
         self.product_tree.heading("Price", text="PRICE (RP)")
@@ -187,10 +222,24 @@ class ProductAdderApp:
     # ── Helpers ──────────────────────────────────────────────────────────────
 
     def _format_price(self, price: int) -> str:
+        """
+        Format an integer price to Indonesian Rupiah string format.
+
+        Args:
+            price: The price as an integer.
+
+        Returns:
+            Formatted price string, e.g., "Rp 12.500".
+        """
         return f"Rp {price:,.0f}".replace(",", ".")
 
-    def _on_row_double_click(self, event):
-        """Fill form fields with the double-clicked row's data."""
+    def _on_row_double_click(self, event) -> None:
+        """
+        Handle double-click on a table row to populate the form fields for editing.
+
+        Args:
+            event: The Tkinter event object.
+        """
         selected = self.product_tree.selection()
         if not selected:
             return
@@ -206,7 +255,13 @@ class ProductAdderApp:
         self.price_entry.delete(0, tk.END)
         self.price_entry.insert(0, raw_price)
 
-    def validate_form(self):
+    def validate_form(self) -> bool:
+        """
+        Validate the input fields in the add product form.
+
+        Returns:
+            True if all fields are valid, False otherwise.
+        """
         p_id = self.id_entry.get().strip()
         p_name = self.name_entry.get().strip()
         p_price = self.price_entry.get().strip()
@@ -225,7 +280,11 @@ class ProductAdderApp:
             return False
         return True
 
-    def add_product(self):
+    def add_product(self) -> None:
+        """
+        Add a new product to the data list and save to file.
+        Validates input, checks for duplicates, and updates the UI.
+        """
         if not self.validate_form():
             return
 
@@ -254,7 +313,11 @@ class ProductAdderApp:
                 text=f"  ✅ Produk '{new_item['name']}' berhasil ditambahkan."
             )
 
-    def delete_product(self):
+    def delete_product(self) -> None:
+        """
+        Delete the selected product from the data list and save to file.
+        Prompts for confirmation before deletion.
+        """
         selected = self.product_tree.selection()
         if not selected:
             messagebox.showinfo("Info", "Pilih produk yang ingin dihapus terlebih dahulu.")
@@ -274,7 +337,11 @@ class ProductAdderApp:
             self.refresh_table()
             self.status_label.config(text=f"  🗑 Produk '{item_name}' berhasil dihapus.")
 
-    def refresh_table(self):
+    def refresh_table(self) -> None:
+        """
+        Refresh the product table with current data.
+        Clears the table and repopulates it with all products.
+        """
         for row in self.product_tree.get_children():
             self.product_tree.delete(row)
         for p in self.data:
@@ -288,7 +355,11 @@ class ProductAdderApp:
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    # Enable DPI awareness for better display on high-resolution screens
     setup_dpi_awareness()
+    # Create the main Tkinter window
     root = tk.Tk()
+    # Initialize the application
     app = ProductAdderApp(root)
+    # Start the Tkinter event loop
     root.mainloop()
